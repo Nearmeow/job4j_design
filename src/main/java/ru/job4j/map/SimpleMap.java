@@ -75,7 +75,7 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     private Integer getIndexIfFreeOrNull(K key) {
         int index = indexFor(hash(key.hashCode()));
-        if (table[index] == null || table[index].key != key) {
+        if (table[index] == null || !table[index].key.equals(key)) {
             return null;
         }
         return index;
