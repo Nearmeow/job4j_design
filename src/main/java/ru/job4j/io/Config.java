@@ -3,7 +3,6 @@ package ru.job4j.io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringJoiner;
@@ -19,10 +18,6 @@ public class Config {
 
     public String value(String key) {
         return values.get(key);
-    }
-
-    public Map<String, String> getValues() {
-        return values;
     }
 
     public void load() {
@@ -71,11 +66,6 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        //System.out.println(new Config("app.properties"));
-
-        String testString = "hello";
-        String[] strings = testString.split("=");
-        System.out.println(strings.length);
-        System.out.println(Arrays.toString(strings));
+        System.out.println(new Config("app.properties"));
     }
 }
