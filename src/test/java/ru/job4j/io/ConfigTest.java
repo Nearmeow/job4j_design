@@ -9,8 +9,8 @@ import static org.junit.Assert.assertThat;
 public class ConfigTest {
 
     @Test
-    public void whenPairWithoutComment() {
-        String path = "./data/pair_without_comment.properties";
+    public void whenPairWithoutArg() {
+        String path = "./data/pair_without_arg.properties";
         Config config = new Config(path);
         config.load();
         assertThat(config.value("name"), is("Filya"));
@@ -38,6 +38,20 @@ public class ConfigTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenPairWitIllegalArgument() {
         String path = "./data/pair_with_illegal_argument.properties";
+        Config config = new Config(path);
+        config.load();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenNoKeyParameter() {
+        String path = "./data/pair_with_no_key.properties";
+        Config config = new Config(path);
+        config.load();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenMultipleEqualsSigns() {
+        String path = "./data/when_multiple_equals_signs.properties";
         Config config = new Config(path);
         config.load();
     }

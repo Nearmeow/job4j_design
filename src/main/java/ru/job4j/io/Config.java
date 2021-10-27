@@ -3,8 +3,10 @@ package ru.job4j.io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringJoiner;
 
 public class Config {
 
@@ -19,13 +21,16 @@ public class Config {
         return values.get(key);
     }
 
+    public Map<String, String> getValues() {
+        return values;
+    }
+
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
-            List<String> stringList = read.lines().collect(Collectors.toList());
-            for (String line : stringList) {
+            String line;
+            while ((line = read.readLine()) != null) {
                 if (isValidLine(line)) {
-                    String[] array = line.split("=");
-                    checkArguments(array);
+                    String[] array = checkAndGetSplitLine(line);
                     addToValues(array);
                 }
             }
@@ -38,10 +43,12 @@ public class Config {
         return !line.startsWith("#") && !line.isEmpty();
     }
 
-    private void checkArguments(String[] array) {
-        if (array[0].isEmpty() || array.length > 2) {
+    private String[] checkAndGetSplitLine(String line) {
+        String[] array = line.split("=");
+        if (array[0].isEmpty() || array.length > 2 || !line.contains("=")) {
             throw new IllegalArgumentException();
         }
+        return array;
     }
 
     private void addToValues(String[] array) {
@@ -64,6 +71,11 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Config("app.properties"));
+        //System.out.println(new Config("app.properties"));
+
+        String testString = "hello";
+        String[] strings = testString.split("=");
+        System.out.println(strings.length);
+        System.out.println(Arrays.toString(strings));
     }
 }
