@@ -25,14 +25,14 @@ public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
         return super.visitFile(file, attrs);
     }
 
-    public void printResult() {
+    public List<List<Path>> getResultList() {
+        List<List<Path>> resultList = new ArrayList<>();
         for (Map.Entry<FileProperty, List<Path>> elem : elementsMap.entrySet()) {
             if (elem.getValue().size() > 1) {
-                System.out.println("Duplicates found:");
-                elem.getValue().forEach(System.out::println);
-                System.out.println("----------");
+                resultList.add(elem.getValue());
             }
         }
+        return resultList;
     }
 }
 
