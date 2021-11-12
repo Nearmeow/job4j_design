@@ -17,11 +17,15 @@ public class ArgsName {
         }
         for (String elem : args) {
             String[] pair = elem.split("=");
-            if (pair.length != 2 || pair[0].trim().isEmpty() || pair[1].trim().isEmpty()) {
+            if (pair.length != 2 || !isValidKey(pair[0].trim()) || pair[1].trim().isEmpty()) {
                 throw new IllegalArgumentException();
             }
             values.put(pair[0].substring(1), pair[1]);
         }
+    }
+
+    private boolean isValidKey(String key) {
+        return key.startsWith("-") && key.length() > 1;
     }
 
     public static ArgsName of(String[] args) {
