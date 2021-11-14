@@ -13,12 +13,12 @@ public class ArgsName {
 
     private void parse(String[] args) {
         if (args.length == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Specify arguments.");
         }
         for (String elem : args) {
             String[] pair = elem.split("=");
             if (pair.length != 2 || !isValidKey(pair[0].trim()) || pair[1].trim().isEmpty()) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Invalid argument format. Required format - '-key=value'.");
             }
             values.put(pair[0].substring(1), pair[1]);
         }
