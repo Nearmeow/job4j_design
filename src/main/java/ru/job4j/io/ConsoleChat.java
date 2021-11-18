@@ -25,11 +25,11 @@ public class ConsoleChat {
         Random random = new Random();
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String phrase = reader.readLine();
-            while (!phrase.equals(OUT)) {
-                if (phrase.equals(STOP)) {
+            while (!OUT.equals(phrase)) {
+                if (STOP.equals(phrase)) {
                     chatLog.add(phrase);
                     phrase = reader.readLine();
-                    while (!phrase.equals(CONTINUE)) {
+                    while (!CONTINUE.equals(phrase)) {
                         chatLog.add(phrase);
                         phrase = reader.readLine();
                     }
