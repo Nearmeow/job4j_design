@@ -12,6 +12,18 @@ public class Author {
         this.country = country;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
     @Override
     public String toString() {
         return "Author{" + "name=" + name + ", surname=" + surname + ", country=" + country + "}";

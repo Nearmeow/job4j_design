@@ -18,6 +18,26 @@ public class Book {
         this.isForOver18 = isForOver18;
     }
 
+    public String getBookName() {
+        return bookName;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public String[] getGenres() {
+        return genres;
+    }
+
+    public boolean isForOver18() {
+        return isForOver18;
+    }
+
     @Override
     public String toString() {
         return "Book{" + "bookName=" + bookName + ", author=" + author + ", releaseYear=" + releaseYear + ", genres=" + Arrays.toString(genres) + ", isForOver18=" + isForOver18 + "}";
