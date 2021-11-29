@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<book bookname="Cujo" releaseYear="1981" isForOver18="false">
+    <author name="Stephen" surname="King" country="USA"/>
+    <genres>
+        <genre>Thriller</genre>
+        <genre>Horror</genre>
+        <genre>Mystery</genre>
+    </genres>
+</book>
