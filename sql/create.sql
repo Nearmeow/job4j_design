@@ -10,15 +10,15 @@ create table users(
 );
 
 create table rules(
-    id seria; primary key,
-    data varchar(255),
-)
+    id serial primary key,
+    data varchar(255)
+);
 
 create table role_rules(
     id serial primary key,
     role_id int references role(id),
     user_id int references users(id)
-)
+);
 
 create table category(
     id serial primary key,
@@ -33,7 +33,7 @@ create table state(
 create table item(
     id serial primary key,
     data varchar(255),
-    user_id int references user(id),
+    user_id int references users(id),
     category_id int references category(id),
     state_id int references state(id)
 );
