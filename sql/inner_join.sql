@@ -20,7 +20,21 @@ insert into users(name, address_id) values ('Julia', 3);
 insert into users(name, address_id) values ('Maria', 2);
 insert into users(name, address_id) values ('Vlad', 1);
 
-select * from users join address on users.address_id = address.id;
-select * from users as u join address as a on u.address_id = a.id;
-select u.name as Имя, a.city as Город from users as u join address as a on u.address_id = a.id;
-select u.name as Имя, a.city as Город from users as u join address as a on u.address_id = a.id where a.city like '%o%';
+select * from users
+join address
+on users.address_id = address.id;
+
+select * from users as u
+join address as a
+on u.address_id = a.id;
+
+select u.name as Имя, a.city as Город
+from users as u
+join address as a
+on u.address_id = a.id;
+
+select u.name as Имя, a.city as Город
+from users as u
+join address as a
+on u.address_id = a.id
+where a.city like '%o%';
