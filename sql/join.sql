@@ -28,8 +28,15 @@ on e.department_id = d.id
 where e.department_id is null;
 
 -- 4. Используя left и right join написать запросы, которые давали бы одинаковый результат
-select * from departments d left join employees e on e.department_id = d.id;
-select * from employees e right join departments d on e.department_id = d.id;
+select e.id, e.name as employee, d.name as department
+from departments d
+right join employees e
+on e.department_id = d.id;
+
+select e.id, e.name as employee, d.name as department
+from employees e
+left join departments d
+on e.department_id = d.id;
 
 -- 5. Создать таблицу teens с атрибутами name, gender и заполнить ее. Используя cross join составить все возможные разнополые пары
 create table teens(
